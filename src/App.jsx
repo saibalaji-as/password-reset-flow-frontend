@@ -9,7 +9,7 @@ function App() {
       <div className="container mx-auto">
         <h1 className="title text-center mb-5">Password Reset Flow</h1>
         <Routes>
-          <Route path="/forgot-password" element={<ForgotPasswordForm />} />
+          <Route path="/" element={<ForgotPasswordForm />} />
           <Route
             path="/reset-password/:token"
             element={<ResetPasswordForm />}
