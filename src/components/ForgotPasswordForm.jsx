@@ -9,7 +9,7 @@ function ForgotPasswordForm() {
     e.preventDefault();
     try {
       // API call to request a password reset link
-      const host = document.location.host;
+      const host = document.location.hostname === 'localhost' ? document.location.origin : 'https://password-reset-flow-backend-zlie.onrender.com';
       const url = `${host}/api/auth/forgot-password`
       const response = await axios.post(url, { email });
       setMessage(response.data.message);  // Show success message

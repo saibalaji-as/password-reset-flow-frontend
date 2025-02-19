@@ -14,7 +14,7 @@ function ResetPasswordForm() {
     // Validate token when component is loaded
     const validateToken = async () => {
       try {
-        const host = document.location.hostname;
+        const host = document.location.hostname === 'localhost' ? document.location.origin : 'https://password-reset-flow-backend-zlie.onrender.com';
         const url = `${host}/api/auth/reset-password/${token}`
         const response = await axios.get(url);
         response && setIsTokenValid(true);
@@ -34,7 +34,7 @@ function ResetPasswordForm() {
     }
 
     try {
-      const host = document.location.hostname;
+      const host = document.location.hostname === 'localhost' ? document.location.origin : 'https://password-reset-flow-backend-zlie.onrender.com';
       const url = `${host}/api/auth/reset-password/${token}`
       const response = await axios.post(url, { password });
       setMessage(response.data.message);  // Success message
