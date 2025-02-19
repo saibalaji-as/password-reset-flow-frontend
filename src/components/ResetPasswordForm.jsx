@@ -14,7 +14,9 @@ function ResetPasswordForm() {
     // Validate token when component is loaded
     const validateToken = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/auth/reset-password/${token}`);
+        const host = document.location.hostname;
+        const url = `${host}/api/auth/reset-password/${token}`
+        const response = await axios.get(url);
         response && setIsTokenValid(true);
       } catch (error) {
         setMessage(error ? error : 'Invalid or expired token.');
@@ -32,7 +34,9 @@ function ResetPasswordForm() {
     }
 
     try {
-      const response = await axios.post(`http://localhost:5000/api/auth/reset-password/${token}`, { password });
+      const host = document.location.hostname;
+      const url = `${host}/api/auth/reset-password/${token}`
+      const response = await axios.post(url, { password });
       setMessage(response.data.message);  // Success message
     } catch (error) {
       setMessage(error.response ? error.response.data.message : 'An error occurred');

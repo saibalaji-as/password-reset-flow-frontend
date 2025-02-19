@@ -9,7 +9,9 @@ function ForgotPasswordForm() {
     e.preventDefault();
     try {
       // API call to request a password reset link
-      const response = await axios.post('http://localhost:5000/api/auth/forgot-password', { email });
+      const host = document.location.host;
+      const url = `${host}/api/auth/forgot-password`
+      const response = await axios.post(url, { email });
       setMessage(response.data.message);  // Show success message
     } catch (error) {
       setMessage(error.response ? error.response.data.message : 'An error occurred');
