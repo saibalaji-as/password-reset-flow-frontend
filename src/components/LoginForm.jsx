@@ -32,7 +32,7 @@ function LoginForm() {
           </div>
           <button type="submit" className="btn btn-primary">Login</button>
         </form>
-        <p className="mt-3">Don&apos;t have an account? <Link to="/signup">Signup</Link></p>
+        <p className="mt-3">Don&apos;t have an account? <Link to="/">Signup</Link></p>
         <p className="mt-2"><Link to="/forgot-password">Forgot Password?</Link></p>
       </div>
     );
