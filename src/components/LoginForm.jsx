@@ -6,9 +6,14 @@ function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
   
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
       e.preventDefault();
       console.log({ email, password });
+      const host = document.location.hostname === 'localhost' ? document.location.origin : 'https://password-reset-flow-backend-zlie.onrender.com';
+      const url = `${host}/api/auth/login`;
+      
+      const response = await axios.post(url, { email, password });
+      setMessage(response.data.message);  // Show success message
       alert("Login successful!");
     };
   
