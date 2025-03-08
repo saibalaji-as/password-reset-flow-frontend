@@ -3,7 +3,6 @@ import ForgotPasswordForm from "./components/ForgotPasswordForm";
 import ResetPasswordForm from "./components/ResetPasswordForm";
 import SignupForm from "./components/SignupForm";
 import LoginForm from "./components/LoginForm";
-import ProtectedPage from "./components/ProtectedPage";
 
 function App() {
   return (
@@ -14,10 +13,6 @@ function App() {
           <Route path="/" element={<SignupForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/forgot-password" element={<ForgotPasswordForm />} />
-          <Route
-            path="/protected"
-            element={token ? <ProtectedPage /> : <Navigate to="/login" />}
-          />
           <Route
             path="/reset-password/:token"
             element={<ResetPasswordForm />}
