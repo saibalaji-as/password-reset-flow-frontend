@@ -11,7 +11,9 @@ const LoginForm = ({ setToken }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("http://localhost:5000/login", { email, password });
+      const host = document.location.hostname === 'localhost' ? document.location.origin : 'https://password-reset-flow-backend-zlie.onrender.com';
+      const url = `${host}/api/auth/login`
+      const { data } = await axios.post(url, { email, password });
       localStorage.setItem("token", data.token);
       setToken(data.token);
       setMessage("Login successful!");
