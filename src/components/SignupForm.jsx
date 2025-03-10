@@ -16,7 +16,7 @@ function SignupForm() {
         return;
       }
       try {
-        const host = document.location.hostname === 'localhost' ? document.location.origin : 'https://password-reset-flow-backend-5nma.onrender.com';
+        const host = document.location.hostname === 'localhost' ? document.location.origin : 'https://password-reset-flow-backend-8mwy.onrender.com';
         const url = `${host}/api/auth/register`
         const response = await axios.post(url, { email, password });
         alert(response.data.message);
