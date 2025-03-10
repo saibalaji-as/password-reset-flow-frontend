@@ -14,7 +14,6 @@ function LoginForm() {
       const url = `${host}/api/auth/login`;
       
       const response = await axios.post(url, { email, password });
-      setMessage(response.data.message);  // Show success message
       alert("Login successful!");
     };
   

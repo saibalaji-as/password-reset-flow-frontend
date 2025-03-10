@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 function ResetPasswordForm() {
   const { token } = useParams();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const [isTokenValid, setIsTokenValid] = useState(false);
 
@@ -38,6 +39,7 @@ function ResetPasswordForm() {
       const url = `${host}/api/auth/set-new-password`;
       const response = await axios.post(url, { token: token, newPassword: password });
       setMessage(response.data.message);  // Success message
+      navigate('/login');
     } catch (error) {
       setMessage(error.response ? error.response.data.message : 'An error occurred');
     }
