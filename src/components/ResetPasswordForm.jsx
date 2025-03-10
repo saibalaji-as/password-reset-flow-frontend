@@ -35,8 +35,8 @@ function ResetPasswordForm() {
 
     try {
       const host = document.location.hostname === 'localhost' ? document.location.origin : 'https://password-reset-flow-backend-ps31.onrender.com';
-      const url = `${host}/api/auth/reset-password/${token}`
-      const response = await axios.post(url, { password });
+      const url = `${host}/api/auth/set-new-password`;
+      const response = await axios.post(url, { token: token, newPassword: password });
       setMessage(response.data.message);  // Success message
     } catch (error) {
       setMessage(error.response ? error.response.data.message : 'An error occurred');
